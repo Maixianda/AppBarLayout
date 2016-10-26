@@ -1,8 +1,10 @@
 package com.example.myapplication.com.example.desc;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
+import java.lang.annotation.Retention;
 import java.util.ArrayList;
 
 /**
@@ -26,6 +28,21 @@ public class MyViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return fragments.size();
+    }
+
+    public void addFragment(Fragment fragment,String title)
+    {
+        if (null==fragment || null == title)
+        {
+            return;
+        }
+        fragments.add(fragment);
+        titles.add(title);
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return titles.get(position);
     }
 }
